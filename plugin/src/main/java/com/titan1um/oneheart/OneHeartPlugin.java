@@ -1,8 +1,10 @@
 package com.titan1um.oneheart;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.plugin.java.JavaPlugin;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class OneHeartPlugin extends JavaPlugin {
 
@@ -11,12 +13,9 @@ public final class OneHeartPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         Bukkit.getScheduler().runTaskTimer(this, new HeartTask(this), 0L, 1L);
-
         getCommand("oneheart").setExecutor(new OneHeartCommand(this));
-
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
-
-        getLogger().info("[One Heart] Loaded!");
+        getLogger().info("One Heart plugin is loaded!");
 
         // bStats metrics
         int pluginId = 30593;
@@ -31,12 +30,13 @@ public final class OneHeartPlugin extends JavaPlugin {
             return gamemodeMap;
         }));
 
-        metrics.addCustomChart(new MultiLineChart("players_and_servers", () -> {
+        metrics.addCustomChart(new Metrics.MultiLineChart("players_and_servers", () -> {
             Map<String, Integer> valueMap = new HashMap<>();
             valueMap.put("servers", 1);
             valueMap.put("players", Bukkit.getOnlinePlayers().size());
             return valueMap;
         }));
+    }
 
     public boolean isEnabledState() {
         return enabled;
