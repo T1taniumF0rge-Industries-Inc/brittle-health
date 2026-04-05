@@ -16,28 +16,28 @@ public final class OneHeartCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!sender.isOp()) {
-            sender.sendMessage("§cYou must be OP to use this command.");
+            sender.sendMessage("§c[One Heart] You are not an operator and therefore cannot change the settings of One Heart!");
             return true;
         }
 
         if (args.length != 1) {
-            sender.sendMessage("§eUsage: /oneheart <on|off>");
+            sender.sendMessage("§e[One Heart] Usage: /oneheart <on|off>");
             return true;
         }
 
         if (args[0].equalsIgnoreCase("on")) {
             plugin.setEnabledState(true);
-            sender.sendMessage("§aOneHeart enabled.");
+            sender.sendMessage("§a[One Heart] Enabled!");
             return true;
         }
 
         if (args[0].equalsIgnoreCase("off")) {
             plugin.setEnabledState(false);
-            sender.sendMessage("§cOneHeart disabled.");
+            sender.sendMessage("§c[One Heart] Disabled!");
             return true;
         }
 
-        sender.sendMessage("§eUsage: /oneheart <on|off>");
+        sender.sendMessage("§e[One Heart] Usage: /oneheart <on|off>");
         return true;
     }
 }
