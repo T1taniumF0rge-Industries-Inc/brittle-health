@@ -12,7 +12,10 @@ public final class OneHeartPlugin extends JavaPlugin {
         Bukkit.getScheduler().runTaskTimer(this, new HeartTask(this), 0L, 1L);
 
         getCommand("oneheart").setExecutor(new OneHeartCommand(this));
-        getCommand("oh").setExecutor(new OneHeartCommand(this));
+
+        Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
+
+        getLogger().info("[One Heart] Loaded!");
     }
 
     public boolean isEnabledState() {
