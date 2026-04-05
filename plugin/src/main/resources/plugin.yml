@@ -4,3 +4,9 @@ main: com.titan1um.oneheart.OneHeartPlugin
 api-version: 1.18
 author: Titan1um
 description: Sets you to one heart and removes the other 9 hearts!
+
+commands:
+  oneheart:
+    description: Toggle one heart on/off
+    usage: /oneheart <on|off>
+    aliases: [oh]
