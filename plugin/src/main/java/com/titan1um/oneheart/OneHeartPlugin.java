@@ -29,13 +29,14 @@ public final class OneHeartPlugin extends JavaPlugin {
                 gamemodeMap.put(gamemode, gamemodeMap.getOrDefault(gamemode, 0) + 1);
             }
             return gamemodeMap;
+        }));
 
         metrics.addCustomChart(new MultiLineChart("players_and_servers", () -> {
             Map<String, Integer> valueMap = new HashMap<>();
             valueMap.put("servers", 1);
             valueMap.put("players", Bukkit.getOnlinePlayers().size());
             return valueMap;
-        }
+        }));
 
     public boolean isEnabledState() {
         return enabled;
