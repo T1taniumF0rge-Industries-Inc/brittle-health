@@ -7,10 +7,18 @@ import org.bukkit.entity.Player;
 
 public final class HeartTask implements Runnable {
 
+    private final OneHeartPlugin plugin;
     private static final double ONE_HEART = 2.0;
+
+    public HeartTask(OneHeartPlugin plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public void run() {
+
+        if (!plugin.isEnabledState()) return;
+
         for (Player player : Bukkit.getOnlinePlayers()) {
 
             AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
