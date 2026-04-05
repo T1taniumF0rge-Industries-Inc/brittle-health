@@ -5,9 +5,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class OneHeartPlugin extends JavaPlugin {
 
+    private boolean enabled = true;
+
     @Override
     public void onEnable() {
-        // Run every tick (datapack equivalent)
-        Bukkit.getScheduler().runTaskTimer(this, new HeartTask(), 0L, 1L);
+        Bukkit.getScheduler().runTaskTimer(this, new HeartTask(this), 0L, 1L);
+
+        getCommand("oneheart").setExecutor(new OneHeartCommand(this));
+        getCommand("oh").setExecutor(new OneHeartCommand(this));
+    }
+
+    public boolean isEnabledState() {
+        return enabled;
+    }
+
+    public void setEnabledState(boolean enabled) {
+        this.enabled = enabled;
     }
 }
