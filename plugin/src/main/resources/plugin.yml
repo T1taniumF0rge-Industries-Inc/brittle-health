@@ -1,4 +1,4 @@
-name: One Heart
+name: OneHeart
 version: 1.1
 main: com.titan1um.oneheart.OneHeartPlugin
 api-version: 1.18
@@ -7,6 +7,6 @@ description: Sets you to one heart and removes the other 9 hearts!
 
 commands:
   oneheart:
-    description: Toggle one heart on/off
+    description: Toggle one heart mode
     usage: /oneheart <on|off>
     aliases: [oh]
