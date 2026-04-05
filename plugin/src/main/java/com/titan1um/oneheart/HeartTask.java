@@ -13,16 +13,12 @@ public final class HeartTask implements Runnable {
     public void run() {
         for (Player player : Bukkit.getOnlinePlayers()) {
 
-            // Get max health attribute safely (1.18 compatible)
             AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
 
-            if (attribute != null) {
-                if (attribute.getBaseValue() != ONE_HEART) {
-                    attribute.setBaseValue(ONE_HEART);
-                }
+            if (attribute != null && attribute.getBaseValue() != ONE_HEART) {
+                attribute.setBaseValue(ONE_HEART);
             }
 
-            // Clamp current health
             if (player.getHealth() > ONE_HEART) {
                 player.setHealth(ONE_HEART);
             }
